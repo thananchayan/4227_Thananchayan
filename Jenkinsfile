@@ -1,3 +1,12 @@
+// Import the necessary classes
+import org.jenkinsci.plugins.docker.workflow.*
+
+// Use the method in a script block approved by the whitelist
+script {
+    docker.image("react-docker").stop()
+}
+
+
 pipeline {
     agent any
 
