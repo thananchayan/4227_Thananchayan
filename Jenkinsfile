@@ -37,13 +37,13 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Cleanup
-            script {
-                docker.image("react-docker:tag").stop()
-                docker.image("react-docker:tag").remove(force: true)
-            }
-        }
-    }
+    // post {
+    //     always {
+    //         // Cleanup
+    //         script {
+    //             docker.image("react-docker:tag").stop()
+    //             docker.image("react-docker:tag").remove(force: true)
+    //         }
+    //     }
+    // }
 }
