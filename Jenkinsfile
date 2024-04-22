@@ -29,21 +29,21 @@ pipeline {
             }
         }
 
-        stage('Verify Deployment') {
-            steps {
-                // Verify deployment
-                sh 'curl http://localhost:8083' // Example: Use curl to check if the application is running
+        // stage('Verify Deployment') {
+        //     steps {
+        //         // Verify deployment
+        //         sh 'curl http://localhost:8083' // Example: Use curl to check if the application is running
+        //     }
+        // }
+    }
+
+    post {
+        always {
+            // Cleanup
+            script {
+                docker.image("react-docker:tag").stop()
+                docker.image("react-docker:tag").remove(force: true)
             }
         }
     }
-
-    // post {
-    //     always {
-    //         // Cleanup
-    //         script {
-    //             docker.image("react-docker:tag").stop()
-    //             docker.image("react-docker:tag").remove(force: true)
-    //         }
-    //     }
-    // }
 }
